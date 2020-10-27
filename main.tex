@@ -1,0 +1,26 @@
+\define\field{\mathbb F}
+\define\bits{\{0,1\}}
+
+
+\starttext
+\startstandardmakeup
+\midaligned{Proofs, Arguments, and Zero-Knowledge}
+\midaligned{Solutions by L. Russo}
+\stopstandardmakeup
+\placecombinedlist[content]
+\chapter{Definitions and Technical Preliminaries}
+\subject{Exercise 3.2}
+Let $p=11$. Consider the function $f:\{0,1\}^2 \to \field_p$ given by $f(0,0) = 3$, $f(0,1) = 4$, $f(1,0) = 1$ and $f(1,1) = 2$. Write out an explicit expression for the multilinear extension $\tilde{f}$ of $f$. What is $f(2,4)$?
+
+\subsubject{Solution}
+We first write the Lagrange interpolation for $f$ as $\tilde{f}(x_1, x_2) = \sum_{w \in \bits^2} f(w)\Chi_w(x_1, x_2)$, where $\Chi_w(x_1, x_2) = \prod_{i=1}^2 (x_i w_i + (1-x_i)(1-w_i)$. We easily determine:
+\startitemize[packed]
+\item $\Chi_{00}(x_1, x_2) = (1-x_1)(1-x_2)$
+\item $\Chi_{01}(x_1, x_2) = (1-x_1)x_2$
+\item $\Chi_{10}(x_1, x_2) = x_1(1-x_2)$
+\item $\Chi_{11}(x_1, x_2) = x_1x_2$
+\stopitemize
+Then we only need to compute $\tilde{f}(x_1, x_2) = 3(1-x_1)(1-x_2) + 4(1-x_1)x_2 + x_1(1-x_2) +2x_1x_2$ in $(x_1, x_2) = (2, 4)$.
+
+$\tilde{f}(2, 4) = 3(1-2)(1-4) + 4(1-2)4 + 2\cdot 4 +2\cdot 2\cdot 4 = 3$
+\stoptext

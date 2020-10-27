@@ -1,2 +1,3 @@
 # proofs
-Proofs, Arguments and Zero-Knowledge
+
+Proofs, Arguments and Zero-Knowledge.
