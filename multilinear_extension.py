@@ -1,5 +1,7 @@
 """
-Fix some prime p of your choosing. Write a Python program that takes as input an array of length 2^l specifying all evaluations of a function f:{0,1} → Fp and a vector r ∈ Fp and outputs f'(r).
+Fix some prime p of your choosing. Write a Python program that takes as input
+an array of length 2^l specifying all evaluations of a function f:{0,1} → Fp
+and a vector r ∈ Fp and outputs f'(r).
 """
 
 from typing import Dict, List
