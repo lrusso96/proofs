@@ -1,18 +1,34 @@
 \define\field{\mathbb F}
 \define\bits{\{0,1\}}
 
+\definehead[exercise][subject]
+\define\solution{\framed{Solution}}
+
+\setuphead[exercise][
+    textstyle=bold,
+    after=\nowhitespace
+]
+
+\definestartstop[solution][
+    before=\blank\startmarginrule,
+    after=\stopmarginrule\blank
+]
 
 \starttext
+
 \startstandardmakeup
 \midaligned{Proofs, Arguments, and Zero-Knowledge}
 \midaligned{Solutions by L. Russo}
 \stopstandardmakeup
-\placecombinedlist[content]
-\chapter{Definitions and Technical Preliminaries}
-\subject{Exercise 3.2}
-Let $p=11$. Consider the function $f:\{0,1\}^2 \to \field_p$ given by $f(0,0) = 3$, $f(0,1) = 4$, $f(1,0) = 1$ and $f(1,1) = 2$. Write out an explicit expression for the multilinear extension $\tilde{f}$ of $f$. What is $f(2,4)$?
 
-\subsubject{Solution}
+\starttitle[title=Preface]
+\stoptitle
+
+\starttitle[title=Solutions]
+\exercise{Exercise 3.3}
+Let $p=11$. Consider the function $f:\{0,1\}^2 \to \field_p$ given by $f(0,0) = 3$, $f(0,1) = 4$, $f(1,0) = 1$ and $f(1,1) = 2$. Write out an explicit expression for the multilinear extension $\tilde{f}$ of $f$.
+
+\startsolution
 We first write the Lagrange interpolation for $f$ as $\tilde{f}(x_1, x_2) = \sum_{w \in \bits^2} f(w)\Chi_w(x_1, x_2)$, where $\Chi_w(x_1, x_2) = \prod_{i=1}^2 (x_i w_i + (1-x_i)(1-w_i)$. We easily determine:
 \startitemize[packed]
 \item $\Chi_{00}(x_1, x_2) = (1-x_1)(1-x_2)$
@@ -20,7 +36,21 @@ We first write the Lagrange interpolation for $f$ as $\tilde{f}(x_1, x_2) = \sum
 \item $\Chi_{10}(x_1, x_2) = x_1(1-x_2)$
 \item $\Chi_{11}(x_1, x_2) = x_1x_2$
 \stopitemize
-Then we only need to compute $\tilde{f}(x_1, x_2) = 3(1-x_1)(1-x_2) + 4(1-x_1)x_2 + x_1(1-x_2) +2x_1x_2$ in $(x_1, x_2) = (2, 4)$.
+\stopsolution
+What is $\tilde{f}(2,4)$?
+\startsolution
+We only need to compute $\tilde{f}(x_1, x_2) = 3(1-x_1)(1-x_2) + 4(1-x_1)x_2 + x_1(1-x_2) +2x_1x_2$ in $(x_1, x_2) = (2, 4)$.
+$\tilde{f}(2, 4) = 3(1-2)(1-4) + 4(1-2)4 + 2\cdot 4 +2\cdot 2\cdot 4 = 3$\stopsolution
 
-$\tilde{f}(2, 4) = 3(1-2)(1-4) + 4(1-2)4 + 2\cdot 4 +2\cdot 2\cdot 4 = 3$
+Now  consider  the  function $f:\bits^3 \to \field_p$ given by $f(0,0,0) = 1$, $f(0,1,0) = 2$, $f(1,0,0) = 3$, $f(1,1,0) = 4$, $f(0,0,1) = 5$, $f(0,1,1) = 6$, $f(1,0,1) = 7$, $f(1,1,1) = 8$. What is $\tilde{f}(2,4,6)$?
+\startsolution
+$\tilde{f}(2,4,6) = 0$\footnote{Simply run multilinear_extension.py with the input values of the exercises. See also the next exercise.}
+\stopsolution
+
+\exercise{Exercise 3.4}
+Fix some prime $p$ of your choosing. Write a Python program that takes as input an array of length $2^l$ specifying all evaluations of a function $f:\bits^l \to \field_p$ and a vector $r \in \field_p$, and outputs $\tilde{f}(r)$.
+\startsolution
+Check {\bf multilinear_extension.py} on my GitHub repository.
+\stopsolution
+\stoptitle
 \stoptext
